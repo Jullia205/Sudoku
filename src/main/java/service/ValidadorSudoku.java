@@ -7,19 +7,28 @@ public class ValidadorSudoku {
         int quadranteColuna = (coluna/3)*3;
         int quadranteLinha = (linha/3)*3;
 
-        for(int j=0; j<coluna;j++){
-            if(num==tabuleiro[linha][j]){
+        for(int j=0; j<9;j++){
+            if(j==coluna){
+                continue;
+            }
+            else if(num==tabuleiro[linha][j]){
                 return false;
             }
         }
-        for(int i=0; i<linha;i++){
-            if(num==tabuleiro[i][coluna]){
+        for(int i=0; i<9;i++){
+            if(i==linha){
+                continue;
+            }
+            else if(num==tabuleiro[i][coluna]){
                 return false;
             }
         }
         for(int l=quadranteLinha; l<quadranteLinha+3;l++){
             for(int c=quadranteColuna; c<quadranteColuna+3;c++){
-                if(tabuleiro[l][c]==num){
+                if(l==linha && c==coluna){
+                    continue;
+                }
+                else if(tabuleiro[l][c]==num){
                     return false;
                 }
             }

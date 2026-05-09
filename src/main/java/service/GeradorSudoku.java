@@ -12,17 +12,27 @@ public class GeradorSudoku extends ValidadorSudoku {
         return (int)(Math.random()*range)+1;
     }
 
-    public void gerar(){
-        int num=0;
-        for(int linha=0; linha<9; linha++){
-            for(int coluna=0;coluna<9;coluna++){
-
-                do{
-                    num = randomNumber();
-                }while(!validaCelula(tabuleiro,linha,coluna,num));
-                tabuleiro[linha][coluna]=num;
-            }
+    public boolean gerar(int l, int c){
+        if(l>8){
+            return true;
         }
+        for(int num=1; num<=9; num++){
+            if(validaCelula(tabuleiro,l,c,num)){
+                tabuleiro[l][c]=num;
+                if(c+1==9){
+                    if(gerar(l+1,0)){
+                        return true;
+                    }
+                }
+                else{
+                    if (gerar(l, c + 1)) {
+                        return true;
+                    }
+                }
+            }
+            tabuleiro[l][c]=0;
+        }
+        return false;
     }
 
     public void mostraTabuleiro(){
