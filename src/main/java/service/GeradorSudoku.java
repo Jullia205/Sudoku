@@ -7,9 +7,21 @@ public class GeradorSudoku extends ValidadorSudoku {
         this.tabuleiro = new int[9][9];
     }
 
-    public int randomNumber(){
+    public int[] randomNumber(){
         int range=9-1+1;
-        return (int)(Math.random()*range)+1;
+        int cont=0;
+        int[] randomNums = new int[9];
+        do{
+            int num=(int)(Math.random()*range)+1;
+            if(!validaVetor(randomNums, num)){
+                continue;
+            }
+            else{
+                randomNums[cont]=num;
+                cont++;
+            }
+        }while(cont<9);
+        return randomNums;
     }
 
     public boolean gerar(int l, int c){

@@ -35,4 +35,13 @@ public class ValidadorSudoku {
         }
         return true;
     }
+
+    public boolean validaVetor(int[] vetor, int num){
+        for(int i=0; i<vetor.length; i++){
+            if(vetor[i]==num){
+                return false;
+            }
+        }
+        return true;
+    }
 }

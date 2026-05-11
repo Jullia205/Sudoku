@@ -5,8 +5,6 @@ import model.Tabuleiro;
 public class App {
     public static void main(String[] args){
         GeradorSudoku tabuleiro = new GeradorSudoku();
-        tabuleiro.gerar(0,0);
-        tabuleiro.mostraTabuleiro();
 
     }
 
