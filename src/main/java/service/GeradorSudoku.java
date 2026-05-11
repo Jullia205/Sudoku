@@ -2,9 +2,11 @@ package service;
 
 public class GeradorSudoku extends ValidadorSudoku {
     int[][] tabuleiro;
+    int[] randomNums;
 
     public GeradorSudoku() {
         this.tabuleiro = new int[9][9];
+        this.randomNums = randomNumber();
     }
 
     public int[] randomNumber(){
@@ -28,9 +30,9 @@ public class GeradorSudoku extends ValidadorSudoku {
         if(l>8){
             return true;
         }
-        for(int num=1; num<=9; num++){
-            if(validaCelula(tabuleiro,l,c,num)){
-                tabuleiro[l][c]=num;
+        for(int i=0; i<randomNums.length; i++){
+            if(validaCelula(tabuleiro,l,c,randomNums[i])){
+                tabuleiro[l][c]=randomNums[i];
                 if(c+1==9){
                     if(gerar(l+1,0)){
                         return true;
