@@ -49,6 +49,27 @@ public class GeradorSudoku extends ValidadorSudoku {
         return false;
     }
 
+    public void apagaCelula(){
+        gerar(0,0);
+        int cont=0;
+        int range=9-1+1;
+        do{
+            int l=(int)(Math.random()*range);
+            int c=(int)(Math.random()*range);
+            if(tabuleiro[l][c]==0){
+                continue;
+            } else{
+                tabuleiro[l][c]=0;
+                cont++;
+            }
+        }while(cont<35);
+    }
+    public void dificuldade(){
+        int recursao = 0;
+        int backtrack = 0;
+
+    }
+
     public void mostraTabuleiro(){
         int contC=0;
         int contL=0;
