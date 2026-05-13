@@ -70,6 +70,7 @@ public class GeradorSudoku extends ValidadorSudoku {
         Tabuleiro grid = new Tabuleiro();
         apagaCelula();
         grid.setGrid(tabuleiro);
+
         return grid;
     }
 

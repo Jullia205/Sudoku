@@ -48,21 +48,12 @@ public class ValidadorSudoku {
         return true;
     }
 
-    public Posicao validaCelulaVazia(int[][] tabuleiro){
-        Posicao p = new Posicao();
-        for(int i=0; i<9; i++){
-            for(int j=0; j<9; j++){
-                if(tabuleiro[i][j]!=0){
-                    p.vazia=false;
-                }
-                else{
-                    p.linha=i;
-                    p.coluna=j;
-                    p.vazia=true;
-                }
-            }
+    public boolean validaCelulaVazia(int[][] tabuleiro,int l, int c){
+        if(tabuleiro[l][c]!=0){
+           return false;
         }
-
-        return p;
+        else{
+            return true;
+        }
     }
 }
