@@ -1,11 +1,12 @@
 package service;
 
+import model.Tabuleiro;
+
 public class GeradorSudoku extends ValidadorSudoku {
     int[][] tabuleiro;
     int[] randomNums;
 
     public GeradorSudoku() {
-        this.tabuleiro = new int[9][9];
         this.randomNums = randomNumber();
     }
 
@@ -26,20 +27,20 @@ public class GeradorSudoku extends ValidadorSudoku {
         return randomNums;
     }
 
-    public boolean gerar(int l, int c){
+    public boolean gerarTabuleiro(int l,int c){
         if(l>8){
             return true;
         }
         for(int i=0; i<randomNums.length; i++){
-            if(validaCelula(tabuleiro,l,c,randomNums[i])){
+            if(validaCelula(tabuleiro, l, c, randomNums[i])){
                 tabuleiro[l][c]=randomNums[i];
                 if(c+1==9){
-                    if(gerar(l+1,0)){
+                    if(gerarTabuleiro(l+1,0)){
                         return true;
                     }
                 }
                 else{
-                    if (gerar(l, c + 1)) {
+                    if (gerarTabuleiro(l, c + 1)) {
                         return true;
                     }
                 }
@@ -50,7 +51,7 @@ public class GeradorSudoku extends ValidadorSudoku {
     }
 
     public void apagaCelula(){
-        gerar(0,0);
+        gerarTabuleiro(0,0);
         int cont=0;
         int range=9-1+1;
         do{
@@ -64,6 +65,14 @@ public class GeradorSudoku extends ValidadorSudoku {
             }
         }while(cont<35);
     }
+
+    public Tabuleiro gerarPuzzle(){
+        Tabuleiro grid = new Tabuleiro();
+        apagaCelula();
+        grid.setGrid(tabuleiro);
+        return grid;
+    }
+
     public void dificuldade(){
         int recursao = 0;
         int backtrack = 0;

@@ -1,5 +1,8 @@
 package service;
 
+import model.Posicao;
+import model.Tabuleiro;
+
 public class ValidadorSudoku {
 
     public boolean validaCelula(int[][] tabuleiro, int linha, int coluna, int num){
@@ -45,4 +48,21 @@ public class ValidadorSudoku {
         return true;
     }
 
+    public Posicao validaCelulaVazia(int[][] tabuleiro){
+        Posicao p = new Posicao();
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+                if(tabuleiro[i][j]!=0){
+                    p.vazia=false;
+                }
+                else{
+                    p.linha=i;
+                    p.coluna=j;
+                    p.vazia=true;
+                }
+            }
+        }
+
+        return p;
+    }
 }
