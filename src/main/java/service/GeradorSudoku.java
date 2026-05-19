@@ -51,7 +51,7 @@ public class GeradorSudoku extends ValidadorSudoku {
         return false;
     }
 
-    public void apagaCelula(){
+    public void apagaCelula(int nivel){
         gerarTabuleiro(0,0);
         int cont=0;
         int range=9-1+1;
@@ -64,13 +64,15 @@ public class GeradorSudoku extends ValidadorSudoku {
                 tabuleiro[l][c]=0;
                 cont++;
             }
-        }while(cont<35);
+        }while(cont<nivel);
     }
 
     public void dificuldade(){
-        Solver resolve = new Solver();
+        Solver resolve = new Solver(tabuleiro);
         resolve.solver(0,0);
-        System.out.println("Número de backtrackings: "+resolve.backtracking);
+        if(resolve.backtracking<100){
+
+        }
 
     }
 

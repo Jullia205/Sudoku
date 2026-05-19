@@ -1,7 +1,13 @@
 package service;
 
-public class Solver extends GeradorSudoku {
+public class Solver extends ValidadorSudoku {
     int backtracking;
+    int[][] tabuleiro;
+
+    public Solver (int[][] tabuleiro){
+        this.tabuleiro = tabuleiro;
+    }
+
 
     public boolean solver(int l, int c){
         if(l>8){
@@ -33,9 +39,9 @@ public class Solver extends GeradorSudoku {
                     }
                 }
                 tabuleiro[l][c] = 0;
-                backtracking++;
             }
         }
+        backtracking++;
         return false;
     }
 }
