@@ -7,6 +7,7 @@ public class GeradorSudoku extends ValidadorSudoku {
     int[] randomNums;
 
     public GeradorSudoku() {
+        this.tabuleiro = new int[9][9];
         this.randomNums = randomNumber();
     }
 
@@ -66,18 +67,19 @@ public class GeradorSudoku extends ValidadorSudoku {
         }while(cont<35);
     }
 
+    public void dificuldade(){
+        Solver resolve = new Solver();
+        resolve.solver(0,0);
+        System.out.println("Número de backtrackings: "+resolve.backtracking);
+
+    }
+
     public Tabuleiro gerarPuzzle(){
         Tabuleiro grid = new Tabuleiro();
         apagaCelula();
+        dificuldade();
         grid.setGrid(tabuleiro);
-
         return grid;
-    }
-
-    public void dificuldade(){
-        int recursao = 0;
-        int backtrack = 0;
-
     }
 
     public void mostraTabuleiro(){
